@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { useTodos } from '../state/TodoContext';
 
-function AddTaskForm({ onAdd }) {
-  // Переименовали для удобства понимания
+function AddTaskForm() {
   const [taskName, setTaskName] = useState("");
+  const { dispatch } = useTodos();
   
   const handleSubmit = (event) => {
     event.preventDefault(); 
@@ -12,20 +13,25 @@ function AddTaskForm({ onAdd }) {
         return; 
     }
     
-    // Передаем наверх в App.jsx
-    onAdd(taskName);
+    // КРИЧИМ ДИСПЕТЧЕРУ: "Добавь задачу!"
+    dispatch({ 
+      type: 'task/added', 
+      payload: { 
+        id: crypto.randomUUID(), // Важно: ID создается ЗДЕСЬ, а не в редьюсере!
+        title: taskName, 
+        done: false 
+      } 
+    });
     
-    // Очищаем поле (вызываем функцию-сеттер)
     setTaskName("");
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      {/* Управляемый инпут (Controlled Input) */}
       <input 
         type="text" 
-        value={taskName} // Значение берется из стейта
-        onChange={(e) => setTaskName(e.target.value)} // При каждом вводе обновляем стейт
+        value={taskName} 
+        onChange={(e) => setTaskName(e.target.value)} 
         placeholder="Новая задача..."
       />
       <button type="submit">Добавить</button>

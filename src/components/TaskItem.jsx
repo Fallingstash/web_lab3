@@ -1,27 +1,39 @@
-import { useState } from 'react';
+import { useTodos } from '../state/TodoContext';
 
-function TaskItem({ title, done, onDelete, onToggle }) { // переименовали входящий пропс
+function TaskItem({ task }) { // переименовали входящий пропс
+
+  const { dispatch } = useTodos()
 
   // Функция-обработчик клика
-  const handleClick = () => {
-    onToggle();
+  const handleToggle = () => {
+    dispatch({
+      type: 'task/toggled',
+      payload: task.id 
+    });
+      
   };
 
-  const handleDeleteClick = () => {
+  const handleDelete = (e) => {
     e.stopPropagation(); // Останавливаем всплытие!
-    onDelete()
+    dispatch({
+      type: 'task/removed',
+      payload: task.id
+    })
   };
 
   return (
     <li 
-      onClick={handleClick} 
+      onClick={handleToggle} 
       style={{ 
-        cursor: 'pointer', // Чтобы было видно, что на это можно кликнуть
-        textDecoration: done ? 'line-through' : 'none' 
+        cursor: 'pointer', 
+        textDecoration: task.done ? 'line-through' : 'none',
+        marginBottom: '10px'
       }}
     >
-      {title} {done ? '✅' : '⏳'}
-      <button text="Delete" onClick={() => handleDeleteClick()}>Удалить</button>
+      {task.title} {task.done ? '✅' : '⏳'}
+      <button onClick={handleDelete} style={{ marginLeft: '15px' }}>
+        Удалить
+      </button>
     </li>
   );
 }
