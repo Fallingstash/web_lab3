@@ -1,0 +1,14 @@
+# Дерево компонентов
+- App (Провайдеры: Theme, Data, Router)
+  - Layout (Обертка: Sidebar + Outlet)
+    - Sidebar (Списки, кнопка добавления, счетчики)
+    - ThemeToggle
+  - HomePage (Редирект на первый список)
+  - ListPage (Ключ = listId)
+    - ListHeader (Название списка, фильтры)
+    - TaskSearch (Поле поиска)
+    - AddTaskForm (Добавление задачи)
+    - TaskList -> TaskItem (Строка задачи)
+    - Outlet (Для карточки задачи)
+  - TaskCard (Карточка задачи, подзадачи)
+  - NotFoundPage (404)
