@@ -7,10 +7,16 @@ const TodoContext = createContext(null);
 // 2. Создаем Провайдер (обертку, которая раздает данные всем детям)
 export function TodoProvider({ children }) {
   // Наше начальное состояние
-  const initialState = {
+    const initialState = {
+    lists: [
+      { id: 'list-1', title: 'Входящие' },
+      { id: 'list-2', title: 'Работа' },
+      { id: 'list-3', title: 'Дом' }
+    ],
     tasks: [
-      { id: '1', title: 'Купить хлеб', done: false },
-      { id: '2', title: 'Выучить React', done: true }
+      { id: 't1', listId: 'list-1', title: 'Купить хлеб', done: false },
+      { id: 't2', listId: 'list-2', title: 'Сдать отчет', done: false },
+      { id: 't3', listId: 'list-1', title: 'Выучить React', done: true }
     ]
   };
 

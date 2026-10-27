@@ -16,9 +16,14 @@ body {
     background-color: var(--bg-main);
     color: var(--text-main);
     margin: 0;
-    padding: var(--space-4);
+    padding: 0; /* Убрали отступы у body */
+}
+
+/* Создаем контейнер для всего приложения */
+#root {
     display: flex;
-    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
 }
 
 h1 { color: var(--color-primary); text-align: center; }
