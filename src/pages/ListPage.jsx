@@ -20,7 +20,7 @@ function ListPage() {
   return (
     <div>
       <h1>{currentList.title}</h1>
-      <AddTaskForm />
+      <AddTaskForm listId={listId}/>
       <TaskList tasks={tasksForList} />
     </div>
   );

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTodos } from '../state/TodoContext';
 
-function AddTaskForm() {
+function AddTaskForm({ listId }) {
   const [taskName, setTaskName] = useState("");
   const { dispatch } = useTodos();
   
@@ -18,6 +18,7 @@ function AddTaskForm() {
       type: 'task/added', 
       payload: { 
         id: crypto.randomUUID(), // Важно: ID создается ЗДЕСЬ, а не в редьюсере!
+        listId: listId,
         title: taskName, 
         done: false 
       } 
