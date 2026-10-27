@@ -28,8 +28,8 @@ function AddTaskForm({ listId }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input 
+    <form className="add-form" onSubmit={handleSubmit}>
+      <input className='input'
         type="text" 
         value={taskName} 
         onChange={(e) => setTaskName(e.target.value)} 
