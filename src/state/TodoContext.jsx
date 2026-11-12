@@ -13,10 +13,10 @@ export function TodoProvider({ children }) {
       { id: 'list-2', title: 'Работа' },
       { id: 'list-3', title: 'Дом' }
     ],
-    tasks: [
-      { id: 't1', listId: 'list-1', title: 'Купить хлеб', done: false },
-      { id: 't2', listId: 'list-2', title: 'Сдать отчет', done: false },
-      { id: 't3', listId: 'list-1', title: 'Выучить React', done: true }
+        tasks: [
+      { id: 't1', listId: 'list-1', title: 'Купить хлеб', done: false, subtasks: [] },
+      { id: 't2', listId: 'list-2', title: 'Сдать отчет', done: false, subtasks: [] },
+      { id: 't3', listId: 'list-1', title: 'Выучить React', done: true, subtasks: [] }
     ]
   };
 
