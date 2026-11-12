@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router';
 import Layout from './pages/Layout';
 import ListPage from './pages/ListPage';
 import TaskCard from './pages/TaskCard'; // Импортируем
+import NotFoundPage from './pages/NotFoundPage';
 
 
 export const router = createBrowserRouter([
@@ -12,11 +13,14 @@ export const router = createBrowserRouter([
       {
         path: 'lists/:listId',
         element: <ListPage />,
-        // Убрали отсюда children!
       },
       {
-        path: 'lists/:listId/tasks/:taskId', // Тот же путь, но отдельный компонент
+        path: 'lists/:listId/tasks/:taskId',
         element: <TaskCard />,
+      },
+      {
+        path: '*', // Звездочка означает "любой другой путь"
+        element: <NotFoundPage />,
       }
     ],
   },

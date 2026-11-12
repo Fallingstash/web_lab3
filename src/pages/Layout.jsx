@@ -1,8 +1,11 @@
 import { Link, Outlet } from 'react-router';
+import { useTheme } from '../state/ThemeContext';
 import { useTodos } from '../state/TodoContext';
 
 function Layout() {
   const { state } = useTodos();
+
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <div className="app-layout">
@@ -22,6 +25,9 @@ function Layout() {
           <Outlet />
         </div>
       </main>
+        <button onClick={toggleTheme} style={{ height: '20%', marginTop: '706px' }}>
+          {theme === 'dark' ? '☀️ Светлая тема' : '🌙 Тёмная тема'}
+        </button>
     </div>
   );
 }

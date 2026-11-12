@@ -11,6 +11,17 @@
     --radius: 8px;
 }
 
+:root[data-theme="light"] {
+    /* СВЕТЛАЯ ТЕМА */
+    --bg-main: #F4F4F7;
+    --bg-card: #FFFFFF;
+    --color-primary: #fea43c; /* Темнее оранжевый для контраста */
+    --color-secondary: #F59E0B;
+    --text-main: #1B1A17;
+    --text-muted: #5B5B66;
+    --border: #ddd;
+}
+
 * {
     box-sizing: border-box;
 }
